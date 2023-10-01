@@ -9,11 +9,13 @@ let initialCount = 20,
     galleryWrapper = document.querySelector('.gallery'),
     ready = false,
     init = true,
+    query = false,
+    page = 0,
     apiURL = `https://api.unsplash.com/photos/random/?client_id=${apiKey}`
     
 
 function resetVariables() {
-    initialCount = 20, loaded = 0, total = 0, galleryItems = [], ready = false, init = true
+    initialCount = 20, loaded = 0, total = 0, galleryItems = [], ready = false, init = true, query = false, page=0
     galleryWrapper = document.querySelector('.gallery')
     while (galleryWrapper.firstChild) {
         galleryWrapper.removeChild(galleryWrapper.firstChild)
@@ -56,11 +58,15 @@ function fillGallery(galleryItems) {
     })
 }
 
-async function showGallery(apiURL) {
-    if (init) {
-        apiURL = apiURL + `&count=${initialCount}`
+async function showGallery() {
+    if (init && query) apiURL = apiURL + `&per_page=${initialCount}` + '&page=1'
+    if (init && !query) apiURL = apiURL + `&count=${initialCount}`
+    if (query && !init) {
+        const paramReplace = `&page=${page}`
+        page += 1
+        const pageParam = `&page=${page}`
+        apiURL = apiURL.replace(paramReplace, pageParam)
     }
-    console.log(apiURL)
     const response = await (fetch(apiURL).catch()),
     galleryItems = await response.json()
     if (galleryItems.results) {
@@ -71,10 +77,8 @@ async function showGallery(apiURL) {
     }
     
 
-    if (init) {
-        loadMore(40)
-        init = false
-    }
+    if (init && !query) loadMore(40)
+    if (init) init = false
 }
 
 window.addEventListener('scroll', () => {
@@ -83,7 +87,7 @@ window.addEventListener('scroll', () => {
       ready
     ) {
       ready = false
-      showGallery(apiURL)
+      showGallery()
     }
 });
 
@@ -96,7 +100,7 @@ form.addEventListener('submit', (e) => {
     e.preventDefault()
     const searchQuery = e.target.elements.searchTerm.value.trim()
     resetVariables()
-    
+    query = true
     apiURL = `https://api.unsplash.com/search/photos?query=${searchQuery}&client_id=${apiKey}`
-    showGallery(apiURL, true)
+    showGallery()
 })
