@@ -1,6 +1,7 @@
 /// INITIAL SETUP + INFINITE SCROLL
 
-const apiKey = 'BbUGpGYyYimP5Pg_udQcDe78Z9CJVb-dbTcyJTFB1f4'
+const apiKey = 'BbUGpGYyYimP5Pg_udQcDe78Z9CJVb-dbTcyJTFB1f4',
+      loader = document.querySelector('.loader')
 
 let initialCount = 20,
     loaded = 0,
@@ -33,7 +34,7 @@ function updateGlobals() { // Update counters and flags when images loaded
     loaded += 1
     if (loaded === total) {
         ready = true
-
+        loader.style.height = 0
     }
 
 }
