@@ -43,13 +43,17 @@ function fillGallery(galleryItems) {
     total = galleryItems.length
     galleryItems.forEach((item) => {
         const link = document.createElement('a'),
-            img = document.createElement('img')
+            img = document.createElement('img'),
+            author = document.createElement('span')
         link.setAttribute('href', item.links.html)
         link.setAttribute('target', '_blank')
         img.setAttribute('src', item.urls.regular)
         img.setAttribute('alt', item.alt_description)
         img.setAttribute('title', item.alt_description)
         img.addEventListener('load', updateGlobals)
+        author.innerHTML = `ex: Photo by ${item.user.name} on Unsplash`
+        author.setAttribute('class', 'author')
+        link.appendChild(author)
         link.appendChild(img)
 
 
