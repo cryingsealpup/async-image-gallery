@@ -57,7 +57,7 @@ a {
 }
 
 h2 {
-  font-weight: 600;
+  font-weight: 100;
   font-size: 2rem;
   width: 100%;
   background: black;
@@ -66,6 +66,7 @@ h2 {
   padding: 0.5rem 0;
   font-style: italic;
   text-transform: uppercase;
+  margin: 0 0 1rem;
 }
 
 img {
@@ -104,9 +105,6 @@ form input {
   transition: all 0.1s ease;
   margin-bottom: 0.8rem;
 }
-form input:focus + .search-input__button, form input:hover + .search-input__button {
-  display: inline-flex;
-}
 form input:focus, form input:focus-visible {
   box-shadow: 0 0 15px 0rem black;
   background: black;
@@ -119,7 +117,7 @@ form input:focus, form input:focus-visible {
 form input::placeholder {
   color: gray;
 }
-form button {
+form button.submit {
   font-family: "Inter", sans-serif;
   font-weight: 600;
   width: fit-content;
@@ -132,7 +130,7 @@ form button {
   margin: 0 auto 1rem;
   cursor: pointer;
 }
-form button:hover {
+form button.submit:hover {
   transform: skewX(-10deg);
 }
 
@@ -142,21 +140,29 @@ form button:hover {
 }
 .search-input__button {
   position: absolute;
-  right: 4px;
-  top: 4px;
+  right: 0.4rem;
+  top: 0.5rem;
   bottom: 0;
   justify-content: center;
   align-items: center;
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
   appearance: none;
   border: none;
   border-radius: 50%;
-  background: gray;
+  background: black;
   margin: 0;
   padding: 2px;
   color: white;
-  font-size: 13px;
+  font-size: 0.8rem;
   cursor: pointer;
   display: none;
+  transition: all 0.2s ease;
+}
+.search-input__button:hover {
+  background: red;
+}
+
+.input-field.touched:focus + .search-input__button, .input-field.touched:hover + .search-input__button, .input-field.touched + .search-input__button:hover {
+  display: inline-flex;
 }

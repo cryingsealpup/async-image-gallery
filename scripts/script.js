@@ -12,10 +12,10 @@ let initialCount = 20,
     query = false,
     page = 0,
     apiURL = `https://api.unsplash.com/photos/random/?client_id=${apiKey}`
-    
+
 
 function resetVariables() {
-    initialCount = 20, loaded = 0, total = 0, galleryItems = [], ready = false, init = true, query = false, page=0
+    initialCount = 20, loaded = 0, total = 0, galleryItems = [], ready = false, init = true, query = false, page = 0
     galleryWrapper = document.querySelector('.gallery')
     while (galleryWrapper.firstChild) {
         galleryWrapper.removeChild(galleryWrapper.firstChild)
@@ -25,7 +25,7 @@ function resetVariables() {
 
 
 function loadMore(count) { // Update API URL with new quantity of images
-    apiURL = apiURL  + `&count=${count}`
+    apiURL = apiURL + `&count=${count}`
 }
 
 
@@ -43,7 +43,7 @@ function fillGallery(galleryItems) {
     total = galleryItems.length
     galleryItems.forEach((item) => {
         const link = document.createElement('a'),
-              img = document.createElement('img')
+            img = document.createElement('img')
         link.setAttribute('href', item.links.html)
         link.setAttribute('target', '_blank')
         img.setAttribute('src', item.urls.regular)
@@ -52,9 +52,9 @@ function fillGallery(galleryItems) {
         img.addEventListener('load', updateGlobals)
         link.appendChild(img)
 
-        
+
         galleryWrapper.appendChild(link)
-        
+
     })
 }
 
@@ -68,14 +68,13 @@ async function showGallery() {
         apiURL = apiURL.replace(paramReplace, pageParam)
     }
     const response = await (fetch(apiURL).catch()),
-    galleryItems = await response.json()
+        galleryItems = await response.json()
     if (galleryItems.results) {
         fillGallery(galleryItems.results)
-    }
-    else {
+    } else {
         fillGallery(galleryItems)
     }
-    
+
 
     if (init && !query) loadMore(40)
     if (init) init = false
@@ -83,11 +82,11 @@ async function showGallery() {
 
 window.addEventListener('scroll', () => {
     if (
-      window.innerHeight + window.scrollY >= document.body.offsetHeight - 2000 &&
-      ready
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 2000 &&
+        ready
     ) {
-      ready = false
-      showGallery()
+        ready = false
+        showGallery()
     }
 });
 
@@ -103,4 +102,13 @@ form.addEventListener('submit', (e) => {
     query = true
     apiURL = `https://api.unsplash.com/search/photos?query=${searchQuery}&client_id=${apiKey}`
     showGallery()
+})
+
+const input = document.querySelector('.input-field')
+input.addEventListener('input', (e) => {
+    if (e.target.value && !input.classList.contains("touched")) {
+        input.classList.add("touched")
+    } else if (!e.target.value && input.classList.contains("touched")) {
+        input.classList.remove("touched")
+    }
 })
