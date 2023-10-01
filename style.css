@@ -19,9 +19,8 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 63rem;
+  max-width: 61rem;
   margin: 0 auto;
-  /* background: black; */
 }
 
 .footer {
@@ -70,7 +69,7 @@ h2 {
 
 img {
   width: 20rem;
-  height: 24rem;
+  height: 21rem;
   object-fit: cover;
   display: inline-block;
   filter: grayscale(1);
@@ -79,16 +78,6 @@ img {
 }
 img:hover {
   filter: grayscale(0);
-}
-
-.gallery {
-  /* column-count: 3; */
-  column-gap: 0.1rem;
-  background: white;
-  /* display: flow-root; */
-  /* display: flex; */
-  flex-wrap: wrap;
-  width: fit-content;
 }
 
 .search-box h2 {
