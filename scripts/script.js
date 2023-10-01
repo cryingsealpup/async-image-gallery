@@ -104,11 +104,18 @@ form.addEventListener('submit', (e) => {
     showGallery()
 })
 
-const input = document.querySelector('.input-field')
+const input = document.querySelector('.input-field'), 
+      reset = document.querySelector('.search-input__button')
 input.addEventListener('input', (e) => {
     if (e.target.value && !input.classList.contains("touched")) {
         input.classList.add("touched")
     } else if (!e.target.value && input.classList.contains("touched")) {
         input.classList.remove("touched")
     }
+})
+
+reset.addEventListener('click', () => {
+    resetVariables()
+    apiURL = `https://api.unsplash.com/photos/random/?client_id=${apiKey}`
+    showGallery(apiURL)
 })

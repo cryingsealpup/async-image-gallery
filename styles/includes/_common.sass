@@ -11,12 +11,14 @@ html, main
 a
     color: inherit
     text-decoration: none
+    display: inline-block
+    margin-top: -0.45rem
 
 .container
     display: flex
     flex-direction: column
     justify-content: center
-    max-width: 61rem
+    max-width: 60rem
     margin: 0 auto
 
 .footer
@@ -29,7 +31,7 @@ a
     padding: 0 1rem
     background: white
     color: black
-    top: 90vh
+    top: 93vh
     font-size: 1rem
     font-weight: 100
     align-items: center
@@ -37,9 +39,13 @@ a
     width: 100%
     left: 0
     margin-bottom: 3rem
+    
+    div
+        display: flex
+        gap: 1rem
     img
         height: 1.2rem
-        max-width: 3rem
+        width: fit-content
         object-fit: cover
         transition: all 0.3s ease
         &:hover
@@ -58,4 +64,4 @@ h2
     padding: 0.5rem 0
     font-style: italic
     text-transform: uppercase
-    margin: 0 0 1rem
+    margin: 0

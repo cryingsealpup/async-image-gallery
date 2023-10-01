@@ -13,13 +13,15 @@ html, main {
 a {
   color: inherit;
   text-decoration: none;
+  display: inline-block;
+  margin-top: -0.45rem;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 61rem;
+  max-width: 60rem;
   margin: 0 auto;
 }
 
@@ -33,7 +35,7 @@ a {
   padding: 0 1rem;
   background: white;
   color: black;
-  top: 90vh;
+  top: 93vh;
   font-size: 1rem;
   font-weight: 100;
   align-items: center;
@@ -42,9 +44,13 @@ a {
   left: 0;
   margin-bottom: 3rem;
 }
+.footer-copyright div {
+  display: flex;
+  gap: 1rem;
+}
 .footer-copyright img {
   height: 1.2rem;
-  max-width: 3rem;
+  width: fit-content;
   object-fit: cover;
   transition: all 0.3s ease;
 }
@@ -66,7 +72,7 @@ h2 {
   padding: 0.5rem 0;
   font-style: italic;
   text-transform: uppercase;
-  margin: 0 0 1rem;
+  margin: 0;
 }
 
 img {
@@ -104,6 +110,7 @@ form input {
   padding: 0.2rem 1rem;
   transition: all 0.1s ease;
   margin-bottom: 0.8rem;
+  caret-color: gray;
 }
 form input:focus, form input:focus-visible {
   box-shadow: 0 0 15px 0rem black;
@@ -129,14 +136,23 @@ form button.submit {
   padding: 0.5rem 1rem;
   margin: 0 auto 1rem;
   cursor: pointer;
+  top: 3rem;
+  position: relative;
 }
 form button.submit:hover {
   transform: skewX(-10deg);
 }
 
-.search-input {
+.search .container {
   position: relative;
-  display: inline-block;
+  width: 20rem;
+  height: 6rem;
+  margin: 1.5rem 0;
+  justify-content: flex-start;
+}
+.search-input {
+  position: fixed;
+  z-index: 2;
 }
 .search-input__button {
   position: absolute;
