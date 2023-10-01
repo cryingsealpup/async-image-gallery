@@ -1,0 +1,140 @@
+body {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", sans-serif;
+}
+
+html, main {
+  height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 63rem;
+  margin: 0 auto;
+  /* background: black; */
+}
+
+.footer {
+  z-index: 2;
+}
+
+.footer-copyright {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 1rem;
+  background: white;
+  color: black;
+  top: 90vh;
+  font-size: 1rem;
+  font-weight: 100;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  left: 0;
+  margin-bottom: 3rem;
+}
+.footer-copyright img {
+  height: 1.2rem;
+  max-width: 3rem;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+.footer-copyright img:hover {
+  filter: contrast(0.5);
+  transition: all 0.3s ease;
+}
+.footer-copyright a:hover {
+  color: darkslategray;
+}
+
+h2 {
+  font-weight: 600;
+  width: 100%;
+  background: black;
+  color: white;
+  text-align: center;
+  padding: 0.5rem 0;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+img {
+  width: 20rem;
+  height: 24rem;
+  object-fit: cover;
+  display: inline-block;
+  filter: grayscale(1);
+  transition: all 0.2s linear;
+  margin: 0.1rem 0;
+}
+img:hover {
+  filter: grayscale(0);
+}
+
+.gallery {
+  /* column-count: 3; */
+  column-gap: 0.1rem;
+  background: white;
+  /* display: flow-root; */
+  /* display: flex; */
+  flex-wrap: wrap;
+  width: fit-content;
+}
+
+.search-box h2 {
+  background: black;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+form input {
+  font-family: "Inter", sans-serif;
+  width: 40rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  border-bottom: 0.1rem dotted black;
+  box-sizing: border-box;
+  color: black;
+  border-radius: 0;
+  padding: 0.2rem 1rem;
+  transition: all 0.1s ease;
+  margin-bottom: 0.8rem;
+}
+form input:focus, form input:focus-visible {
+  box-shadow: 0 0 15px 0rem black;
+  border-radius: 0;
+  border: none;
+  outline: none;
+  color: black;
+  font-weight: 600;
+}
+form input::placeholder {
+  color: gray;
+}
+form button {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  background: none;
+  border: 0.3rem dotted black;
+  transition: all 0.2s ease;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+}
+form button:hover {
+  background: black;
+  color: white;
+}

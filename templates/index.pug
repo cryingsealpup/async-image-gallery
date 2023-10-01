@@ -1,0 +1,24 @@
+doctype html
+html(lang='en')
+    include includes/_head
+    body 
+        header.header 
+            .search-box
+                include includes/_search-box
+        main
+            .container
+                .gallery
+                    include includes/_gallery
+        footer.footer
+            .container
+                .footer-copyright 
+                        p © 2023 Ekaterina Radchenko
+                        div 
+                            p 
+                                a(href='https://rs.school/js-stage0/') 
+                                    img(src='assets/rs_school_js.svg', alt='RS School logo')
+                            p 
+                                a(href='https://github.com/cryingsealpup') 
+                                    img(src='assets/GitHub_Logo.png', alt='GitHub logo')
+    script(src='./scripts/script.js')
+
