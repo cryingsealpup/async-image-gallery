@@ -99,8 +99,16 @@ form.addEventListener('submit', (e) => {
     e.preventDefault()
     const searchQuery = e.target.elements.searchTerm.value.trim()
     resetVariables()
-    query = true
-    apiURL = `https://api.unsplash.com/search/photos?query=${searchQuery}&client_id=${apiKey}`
+    
+    if (searchQuery === '') {
+        query = false
+        apiURL = `https://api.unsplash.com/photos/random/?client_id=${apiKey}`
+    }
+    else {
+        query = true
+        apiURL = `https://api.unsplash.com/search/photos?query=${searchQuery}&client_id=${apiKey}`
+    }
+    
     showGallery()
 })
 
@@ -114,8 +122,8 @@ input.addEventListener('input', (e) => {
     }
 })
 
-reset.addEventListener('click', () => {
-    resetVariables()
-    apiURL = `https://api.unsplash.com/photos/random/?client_id=${apiKey}`
-    showGallery(apiURL)
-})
+// reset.addEventListener('click', () => {
+//     resetVariables()
+//     apiURL = `https://api.unsplash.com/photos/random/?client_id=${apiKey}`
+//     showGallery(apiURL)
+// })

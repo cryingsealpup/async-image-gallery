@@ -15,6 +15,7 @@ a {
   text-decoration: none;
   display: inline-block;
   margin-top: -0.45rem;
+  margin: -0.45rem auto 0;
 }
 
 .container {
